@@ -1,0 +1,26 @@
+# 1. שם ה-Pipeline
+name: My First CI
+
+# 2. מתי להפעיל? (בכל פעם שעושים Push לקוד)
+on: [push]
+
+# 3. מה עושים?
+jobs:
+  build-and-test:
+    # על איזה מערכת הפעלה להריץ את המפעל?
+    runs-on: ubuntu-latest
+
+    steps:
+      # א. פעולה שמורידה את הקוד שלך לתוך המכונה הווירטואלית
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ב. שלב ה"בנייה" (כאן אנחנו רק מדפיסים הודעה לתרגול)
+      - name: Build step
+        run: echo "The application is building... (Imagine NPM INSTALL here)"
+
+      # ג. שלב ה"בדיקה"
+      - name: Test step
+        run: |
+          echo "Running automated tests..."
+          echo "All tests passed successfully!"
